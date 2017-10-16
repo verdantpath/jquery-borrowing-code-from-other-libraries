@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>JQuery Borrowing Code From Other Libraries</title>
+
+
+</head>
+<body>
+<div>
+  <div id="one" class="hilite">One</div>
+  <div id="two">Two</div>
+  <div id="three">Three</div>
+  <div id="four">Four</div>
+</div>
+
+<script type="text/JavaScript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
+<script type="text/Javascript">
+(function($) {
+  $(document).ready(function() {
+    $.fn.radioClass = function( cls ) {
+      return this             // Start chain, will return its result
+        .siblings()           // Select all siblings of selected elements
+          .removeClass(cls)   // Remove class from those siblings
+        .end()                // Go back to original selection
+        .addClass(cls);       // Add class to selected elements
+    };
+  });
+})(jQuery);
+
+</script>
+</body>
+</html>
